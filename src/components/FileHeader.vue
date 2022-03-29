@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="py-2 d-flex">
         <a href="#" class="me-auto">Boolflix</a>
-        <file-search-bar @search="searchString"/>
+        <file-search-bar @search="searchString($event)"/>
       </div>
     </div>
 

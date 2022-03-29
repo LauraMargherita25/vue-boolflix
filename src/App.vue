@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <file-header @search="searchString"/>
-    <file-main :search-data="strToSearch"/>
+    <file-header @search="searchString($event)"/>
+    <file-main :arrMovies="arrMovies"/>
   </div>
 </template>
 
 <script>
+import axios from "axios"
 import FileHeader from './components/FileHeader.vue'
 import FileMain from './components/FileMain.vue'
 
@@ -19,13 +20,17 @@ export default {
 
   data() {
     return {
-      strToSearch: "",
+      arrMovies: null,
     }
   },
 
   methods: {
-    searchString(strToSearch) {
-      this.strToSearch = strToSearch;
+    searchString(str) {
+      axios.get('https://api.themoviedb.org/3/search/movie?api_key=1814a5181699a3f32f15c63dc0665bd9&language=it-IT&query=' + str)
+      .then(response => {
+        console.log(response);
+        this.arrMovies = response.data.results;
+      })
     }
   }
   

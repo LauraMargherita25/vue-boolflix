@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex">
+  <div class="d-flex align-items-center">
     <input
       class="form-control me-2"
       type="search"
@@ -7,7 +7,7 @@
       v-model="serchInput"
     />
     <button 
-      class="btn btn-outline-success" 
+      class="btn btn-danger" 
       type="submit"
       @click="$emit('search', serchInput)"
       >Search</button>

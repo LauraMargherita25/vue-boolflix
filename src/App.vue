@@ -26,7 +26,10 @@ export default {
 
   methods: {
     searchString(str) {
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=1814a5181699a3f32f15c63dc0665bd9&language=it-IT&query=' + str)
+      if (str == "") {
+        return
+      }
+      axios.get('https://api.themoviedb.org/3/search/movie?api_key=b653bf3e070940e3fc3715a2e87ee7db&language=it-IT&query=' + str)
       .then(response => {
         console.log(response);
         this.arrMovies = response.data.results;

@@ -1,9 +1,11 @@
 <template>
-  <header>
+  <header class="bg-secondary mb-5">
 
     <div class="container-fluid">
       <div class="py-2 d-flex">
-        <a href="#" class="me-auto">Boolflix</a>
+        <a href="#" class="me-auto">
+          <p class="h1 fw-bold text-uppercase text-danger">Boolflix</p>
+        </a>
         <file-search-bar @search="searchString($event)"/>
       </div>
     </div>
@@ -29,4 +31,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+</style>

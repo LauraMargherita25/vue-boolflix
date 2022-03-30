@@ -11,7 +11,10 @@
       <p>Titolo: {{ objCard.title }}</p>
       <p>Titolo originale: {{ objCard.originalTitle }}</p>
       <p>Lingua originale: <lang-flag :iso="objCard.lang" :squared="false" /></p>
-      <p>Voto: {{ getRating() }}</p>
+      <ul class="d-flex align-items-baseline p-0">
+        <p>Voto:</p>
+        <li v-for="star in getRating(objCard.rating)" :key="star" class="text-warning p-1"><i class="fa-solid fa-star"></i></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -19,18 +22,19 @@
 <script>
 import LangFlag from 'vue-lang-code-flags';
 export default {
-    name: "FileFilmCard",
-    components: {
-      LangFlag
+  name: "FileFilmCard",
+  components: {
+    LangFlag
+  },
+  props: {
+    objCard: Object
+  },
+  methods:{
+    getRating(x) {
+      return Math.ceil(x / 2);
+      
     },
-    props: {
-      objCard: Object
-    },
-    methods:{
-      getRating() {
-        return Math.ceil(this.objCard.rating / 2) 
-      }
-    }
+  },
 }
 </script>
 

@@ -1,18 +1,17 @@
 <template>
   <div class="col-3 gy-5">
     <div
-    class="film_card p-2 bg-danger text-light" 
+    class="film_card p-2 bg-danger" 
     :style="{
       'background-image': `url(https://image.tmdb.org/t/p/w342${objCard.img})`,
       'background-size': 'cover',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
-      'filter': 'brightness(.5)',
       }">
       <p>Titolo: {{ objCard.title }}</p>
-      <p>Titolo originale: {{ objCard.original_title }}</p>
+      <p>Titolo originale: {{ objCard.originalTitle }}</p>
       <p>Lingua originale: <lang-flag :iso="objCard.lang" :squared="false" /></p>
-      <p>Voto: {{ objCard.vote_average }}</p>
+      <p>Voto: {{ getRating() }}</p>
     </div>
   </div>
 </template>
@@ -26,6 +25,11 @@ export default {
     },
     props: {
       objCard: Object
+    },
+    methods:{
+      getRating() {
+        return Math.ceil(this.objCard.rating / 2) 
+      }
     }
 }
 </script>

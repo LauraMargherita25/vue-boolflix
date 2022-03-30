@@ -30,28 +30,20 @@ export default {
   methods: {
     searchString(str) {
 
+      const objParams = {
+        api_key: this.apiKey,
+        lang: 'it-IT',
+        query: str,
+      }
+
       if (str == "") {
         return
       }
       // ricerca film
-      axios.get(this.apiUrl + 'search/movie', {
-        params: {
-          api_key: this.apiKey,
-          lang: 'it-IT',
-          query: str,
-        }
-      })
-      .then(response => this.arrMovies = response.data.results)
+      this.axiosCall('movie', objParams)
 
       // ricerca serie
-      axios.get(this.apiUrl + 'search/tv', {
-        params: {
-          api_key: this.apiKey,
-          lang: 'it-IT',
-          query: str,
-        }
-      })
-      .then(response => this.arrSeries = response.data.results)
+      this.axiosCall('tv', objParams)
 
       /* if (str == "") {
         return
@@ -66,7 +58,34 @@ export default {
         console.log(response);
         this.arrSeries = response.data.results;
       }) */
-    }
+    },
+    axiosCall(searchType, objParams) {  
+
+      axios.get(this.apiUrl + 'search/' + searchType, {
+        params: objParams
+      })
+      .then(response => {
+        if (searchType === 'movie'){
+          this.arrMovies = response.data.results.map((movie) => ({
+            id: movie.id,
+            title: movie.title,
+            originalTitle: movie.original_title,
+            lang: movie.original_language,
+            rating: movie.vote_average,
+            img: movie.poster_path,
+          }));
+        } else if (searchType === 'tv') {
+          this.arrSeries = response.data.results.map((serie) => ({
+            id: serie.id,
+            title: serie.name,
+            originalTitle: serie.original_name,
+            lang: serie.original_language,
+            rating: serie.vote_average,
+            img: serie.poster_path,
+          }));
+        }
+      })
+    },
   }
   
 }

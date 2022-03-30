@@ -3,11 +3,11 @@
     <div class="container">
       <div class="row">
         <h2 class="text-light">Film</h2>
-        <file-film-card v-for="movie in arrMovies" :key="movie.title" :objMovie="movie"/>
+        <file-film-card v-for="movie in arrMovies" :key="movie.title" :objCard="movie"/>
       </div>
       <div class="row">
         <h2 class="text-light">Serie tv</h2>
-        <file-film-card v-for="movie in arrSeries" :key="movie.title" :objMovie="movie"/>
+        <file-film-card v-for="serie in arrSeries" :key="serie.title" :objCard="serie"/>
       </div>
     </div>
   </main>

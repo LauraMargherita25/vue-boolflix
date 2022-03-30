@@ -3,16 +3,16 @@
     <div
     class="film_card p-2 bg-danger text-light" 
     :style="{
-      'background-image': `url(https://image.tmdb.org/t/p/w342${objMovie.poster_path})`,
+      'background-image': `url(https://image.tmdb.org/t/p/w342${objCard.img})`,
       'background-size': 'cover',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
       'filter': 'brightness(.5)',
       }">
-      <p>Titolo: {{ objMovie.title }}</p>
-      <p>Titolo originale: {{ objMovie.original_title }}</p>
-      <p>Lingua originale: <lang-flag :iso="objMovie.original_language" :squared="false" /></p>
-      <p>Voto: {{ objMovie.vote_average }}</p>
+      <p>Titolo: {{ objCard.title }}</p>
+      <p>Titolo originale: {{ objCard.original_title }}</p>
+      <p>Lingua originale: <lang-flag :iso="objCard.lang" :squared="false" /></p>
+      <p>Voto: {{ objCard.vote_average }}</p>
     </div>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
       LangFlag
     },
     props: {
-      objMovie: Object
+      objCard: Object
     }
 }
 </script>

@@ -1,12 +1,13 @@
 <template>
   <div class="col-3 gy-5">
     <div
-    class="film_card p-2 bg-danger" 
+    class="film_card p-2 bg-danger text-light" 
     :style="{
       'background-image': `url(https://image.tmdb.org/t/p/w342${objMovie.poster_path})`,
       'background-size': 'cover',
       'background-position': 'center',
       'background-repeat': 'no-repeat',
+      'filter': 'brightness(.5)',
       }">
       <p>Titolo: {{ objMovie.title }}</p>
       <p>Titolo originale: {{ objMovie.original_title }}</p>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <file-header @search="searchString($event)"/>
+    <file-header @search="searchString"/>
     <file-main :arrMovies="arrMovies" :arrSeries="arrSeries"/>
   </div>
 </template>
@@ -20,14 +20,40 @@ export default {
 
   data() {
     return {
-      arrMovies: null,
-      arrSeries: null,
+      apiUrl: 'https://api.themoviedb.org/3/',
+      apiKey: 'b653bf3e070940e3fc3715a2e87ee7db',
+      arrMovies: [],
+      arrSeries: [],
     }
   },
 
   methods: {
     searchString(str) {
+
       if (str == "") {
+        return
+      }
+      // ricerca film
+      axios.get(this.apiUrl + 'search/movie', {
+        params: {
+          api_key: this.apiKey,
+          lang: 'it-IT',
+          query: str,
+        }
+      })
+      .then(response => this.arrMovies = response.data.results)
+
+      // ricerca serie
+      axios.get(this.apiUrl + 'search/tv', {
+        params: {
+          api_key: this.apiKey,
+          lang: 'it-IT',
+          query: str,
+        }
+      })
+      .then(response => this.arrSeries = response.data.results)
+
+      /* if (str == "") {
         return
       }
       axios.get('https://api.themoviedb.org/3/search/movie?api_key=b653bf3e070940e3fc3715a2e87ee7db&language=it-IT&query=' + str)
@@ -39,7 +65,7 @@ export default {
       .then(response => {
         console.log(response);
         this.arrSeries = response.data.results;
-      })
+      }) */
     }
   }
   

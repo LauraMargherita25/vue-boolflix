@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <file-header @search="searchString($event)"/>
-    <file-main :arrMovies="arrMovies"/>
+    <file-main :arrMovies="arrMovies" :arrSeries="arrSeries"/>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       arrMovies: null,
+      arrSeries: null,
     }
   },
 
@@ -33,6 +34,11 @@ export default {
       .then(response => {
         console.log(response);
         this.arrMovies = response.data.results;
+      })
+      axios.get('https://api.themoviedb.org/3/search/tv?api_key=b653bf3e070940e3fc3715a2e87ee7db&language=it-IT&query=' + str)
+      .then(response => {
+        console.log(response);
+        this.arrSeries = response.data.results;
       })
     }
   }

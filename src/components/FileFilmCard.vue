@@ -1,6 +1,13 @@
 <template>
   <div class="col-3 gy-5">
-    <div class="film_card p-2 bg-danger">
+    <div
+    class="film_card p-2 bg-danger" 
+    :style="{
+      'background-image': `url(https://image.tmdb.org/t/p/w342${objMovie.poster_path})`,
+      'background-size': 'cover',
+      'background-position': 'center',
+      'background-repeat': 'no-repeat',
+      }">
       <p>Titolo: {{ objMovie.title }}</p>
       <p>Titolo originale: {{ objMovie.original_title }}</p>
       <p>Lingua originale: <lang-flag :iso="objMovie.original_language" :squared="false" /></p>

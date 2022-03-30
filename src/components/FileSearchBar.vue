@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex align-items-center">
+  <form @submit.prevent class="d-flex align-items-center">
     <input
       class="form-control me-2"
       type="search"
@@ -11,7 +11,7 @@
       type="submit"
       @click="$emit('search', serchInput)"
       >Search</button>
-  </div>
+  </form>
 </template>
 
 <script>

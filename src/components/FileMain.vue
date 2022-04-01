@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="container">
+    <div class="container my-5">
       <div class="row" v-show="arrMovies.length !== 0">
         <h2 class="text-light">Film</h2>
         <file-film-card v-for="movie in arrMovies" :key="movie.title" :objCard="movie"/>

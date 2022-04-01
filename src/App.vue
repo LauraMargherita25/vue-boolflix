@@ -73,6 +73,7 @@ export default {
             lang: movie.original_language,
             rating: movie.vote_average,
             img: movie.poster_path,
+            trama: movie.overview,
           }));
         } else if (searchType === 'tv') {
           this.arrSeries = response.data.results.map((serie) => ({
@@ -82,6 +83,7 @@ export default {
             lang: serie.original_language,
             rating: serie.vote_average,
             img: serie.poster_path,
+            trama: serie.overview,
           }));
         }
       })

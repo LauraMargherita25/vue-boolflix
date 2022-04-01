@@ -2,7 +2,10 @@
   <div class="col-3 gy-5">
     <div class="item_card">
       <div class="item_card-wrapper">
-        <div class="card-front">
+        <div class="card-front" v-if="objCard.img == null" style="width:100%;height:100%;">
+          <img src="https://picsum.photos/300/400">
+        </div>
+        <div class="card-front" v-else>
           <img :src="'https://image.tmdb.org/t/p/w342' + objCard.img" alt="Avatar" style="width:100%;height:100%;">
         </div>
         <div class="card-back">
@@ -14,6 +17,7 @@
               <p>Voto:</p>
               <li v-for="star in getRating(objCard.rating)" :key="star" class="text-warning p-1"><i class="fa-solid fa-star"></i></li>
             </ul>
+            <p class="overflow-auto" style="max-width: 100%; max-height: 100px;">Trama: {{ objCard.trama }}</p>
           </div>
         </div>
       </div>

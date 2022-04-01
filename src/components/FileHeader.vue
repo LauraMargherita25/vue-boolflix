@@ -1,5 +1,5 @@
 <template>
-  <header class="bg-secondary mb-5">
+  <header class="bg-secondary">
 
     <div class="container-fluid">
       <div class="py-2 d-flex">

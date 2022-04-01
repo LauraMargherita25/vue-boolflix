@@ -14,10 +14,13 @@
             <p>Titolo originale: {{ objCard.originalTitle }}</p>
             <p>Lingua originale: <lang-flag :iso="objCard.lang" :squared="false" /></p>
             <ul class="d-flex align-items-baseline p-0">
-              <p>Voto:</p>
+              <p class="mb-1">Voto:</p>
               <li v-for="star in getRating(objCard.rating)" :key="star" class="text-warning p-1"><i class="fa-solid fa-star"></i></li>
             </ul>
-            <p class="overflow-auto" style="max-width: 100%; max-height: 100px;">Trama: {{ objCard.trama }}</p>
+            <div>
+              <p class="mb-1">Trama:</p>
+              <p class="overflow-auto" style="max-width: 100%; max-height: 100px;">{{ objCard.trama }}</p>
+            </div>
           </div>
         </div>
       </div>

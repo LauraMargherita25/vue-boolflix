@@ -1,9 +1,10 @@
 <template>
   <div class="col-3 gy-5">
     <div class="item_card">
-      <div class="item_card-wrapper">
-        <div class="card-front" v-if="objCard.img == null" style="width:100%;height:100%;">
-          <img src="https://picsum.photos/300/400">
+      <div class="item_card-wrapper bg-secondary">
+        <div class="card-front d-flex" v-if="objCard.img == null" style="width:100%;height:100%;">
+          <!-- <img src="https://picsum.photos/300/400"> -->
+          <p class="text-danger m-auto fs-1 fw-bold">BOOLFLIX</p>
         </div>
         <div class="card-front" v-else>
           <img :src="'https://image.tmdb.org/t/p/w342' + objCard.img" alt="Avatar" style="width:100%;height:100%;">
